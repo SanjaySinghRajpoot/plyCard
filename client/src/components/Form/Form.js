@@ -32,13 +32,22 @@ const Form = (currentId, setCurrentId) => {
 
     if(currentId){
        dispatchEvent(updatePost(currentId, postData)); 
+       clear();
     } else {
       dispatch(createPost(postData));
+      clear();
     }
   };
 
   const clear = () => {
-
+       setCurrentId(null);
+       setPostData({
+        creator: "",
+        title: "",
+        message: "",
+        tags: "",
+        selectedFile: "",
+      });
   }
 
 
