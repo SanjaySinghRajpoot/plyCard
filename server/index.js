@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 
-import postRoutes from "./routes/post.js";
+import postRoutes from "./routes/posts.js";
 
   // node -r esm index.js
 
