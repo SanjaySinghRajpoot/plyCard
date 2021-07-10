@@ -10,6 +10,7 @@ import {
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import EditIcon from '@material-ui/icons/Edit';
 import moment from "moment";
 import { useDispatch } from "react-redux";
 
@@ -42,7 +43,7 @@ const Post = ({ post, setCurrentId }) => {
           size="small"
           onClick={() => setCurrentId(post._id)}
         >
-          <MoreHorizIcon fontSize="default" />
+         <EditIcon />
         </Button>
       </div>
       <div className={classes.details}>
