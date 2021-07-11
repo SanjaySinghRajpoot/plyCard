@@ -9,7 +9,6 @@ export default makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     fontFamily: 'sans-serif'
-    
   },
   heading: {
     color: 'rgba(0,183,255, 1)',

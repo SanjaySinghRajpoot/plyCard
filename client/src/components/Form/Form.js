@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
+import Alert from '@material-ui/lab/Alert';
 
 import useStyles from "./styles";
 import { createPost, updatePost } from "../../actions/posts";
@@ -14,9 +15,12 @@ const Form = ({ currentId, setCurrentId }) => {
     tags: "",
     selectedFile: "",
   });
+  
+  // extract data from redux store 
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
   );
+
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -39,7 +43,13 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId === 0) {
-      dispatch(createPost(postData));
+
+      if(postData.creator !== '' && postData.title !== '' && postData.message !== '' && postData.tags !== ''){
+        dispatch(createPost(postData));
+      }else{
+        <Alert severity="error">All fields required</Alert>
+        alert("All fields required");
+      }
       clear();
     } else {
       dispatch(updatePost(currentId, postData));
@@ -55,8 +65,8 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">
-          {currentId ? `Editing "${post.title}"` : "Creating a Plycard"}
+        <Typography variant="h5">
+          {currentId ? `Editing "${post.title}"` : "Create a Plycard"}
         </Typography>
         <TextField
           name="creator"
