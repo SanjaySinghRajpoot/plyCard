@@ -20,7 +20,7 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
-  const isSignup = false;
+  const history = useHistory();
 
   const handleChange = () => {};
 
