@@ -8,7 +8,7 @@ export const signin = async(req, res) => {
       const  { email, password }  = req.body;
 
       try{
-         const existingUser = await User.findOne({ email });
+         const existingUser = await User.findOne({ email });   // find the user in the database 
           
          if(!existingUser) return res.status(404).json({ message :  "User does not exist "});
 
@@ -38,7 +38,7 @@ export const signup = async(req, res) => {
 
         const newUser = await User.findOne({ email });
 
-        if(newUser) return res.send(400).json({message: "User already exists. "});
+        if(newUser) return res.send(400).json({message: " User already exists. "});
 
         const hashedPassword = await bcrypt.hash(password, 12);
         
