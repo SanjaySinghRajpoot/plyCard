@@ -3,18 +3,30 @@ import { Typography, AppBar, Toolbar, Avatar, Button } from "@material-ui/core";
 import plycard from "../../images/plycard.jpg";
 import { Link } from "react-router-dom";
 import useStyles from "./styles";
+import { useDispatch } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));   
-
+  const dispatch = useDispatch();
   console.log(user);
+  const history = useHistory();
+  const location = useLocation();
+
+  const logout = () => {
+        dispatch({ type: 'LOGOUT' });
+       
+        history.push('/');
+
+        setUser(null);
+  };
 
   useEffect(() => {
     const token = user?.token;
 
-    setUser(JSON.parse(localStorage.getItem('profile'));
-  }, []);
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [location]);
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
@@ -42,6 +54,7 @@ const Navbar = () => {
               varient="contained"
               className={classes.logout}
               color="secondary"
+              onClick={logout}
             >
               Logout
             </Button>
