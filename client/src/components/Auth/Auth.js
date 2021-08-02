@@ -41,7 +41,10 @@ const Auth = () => {
         }
   };
 
-  const switchMode = () => {};
+  const switchMode = () => {
+    setIsSignup((prevIsSignup) => !prevIsSignup);
+    setShowPassword(false);
+  };
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
@@ -78,14 +81,14 @@ const Auth = () => {
           <Grid container spacing={2}>
             {isSignup && (
               <>
-                <TextField
+                <Input
                   name="firstName"
                   label="First Name"
                   handleChange={handleChange}
                   autoFocus
                   half
                 />
-                <TextField
+                <Input
                   name="lastName"
                   label="Last Name"
                   handleChange={handleChange}
@@ -93,14 +96,14 @@ const Auth = () => {
                 />
               </>
             )}
-            <TextField
+            <Input
               name="email"
               variant="outlined"
               label="Email Address"
               handleChange={handleChange}
               type="email"
             />
-            <TextField
+            <Input
               name="password"
               variant="outlined"
               label="Password"
@@ -109,7 +112,7 @@ const Auth = () => {
               handleShowPassword={handleShowPassword}
             />
             {isSignup && (
-              <TextField
+              <Input
                 name="confirmPassword"
                 label="Repeat Password"
                 handleChange={handleChange}

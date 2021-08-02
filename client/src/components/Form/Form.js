@@ -68,16 +68,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <Typography variant="h5">
           {currentId ? `Editing "${post.title}"` : "Ask a Question"}
         </Typography>
-        <TextField
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
-        />
+
         <TextField
           name="title"
           variant="outlined"
