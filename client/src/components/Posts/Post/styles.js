@@ -47,7 +47,6 @@ export default makeStyles({
   },
   details: {
     display: 'flex',
-    // position: 'absolute',
     justifyContent: 'relative',
     padding: '25px 13px 0px 28px',
   },
