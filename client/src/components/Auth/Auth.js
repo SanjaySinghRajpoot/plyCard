@@ -7,7 +7,6 @@ import {
   Typography,
   Container,
 } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { GoogleLogin } from "react-google-login";
 import Icon from "./icon";
@@ -41,7 +40,10 @@ const Auth = () => {
         }
   };
 
-  const switchMode = () => {};
+  const switchMode = () => {
+    setIsSignup((prevIsSignup) => !prevIsSignup);
+    setShowPassword(false);
+  };
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
@@ -54,7 +56,7 @@ const Auth = () => {
     try {
       dispatch({ type: "AUTH", data: { result, token } });
 
-      history.pushState("/"); // used to redirect to home page
+      history.pushState('/'); // used to redirect to home page
     } catch (error) {
       console.log(error);
     }
@@ -78,14 +80,14 @@ const Auth = () => {
           <Grid container spacing={2}>
             {isSignup && (
               <>
-                <TextField
+                <Input
                   name="firstName"
                   label="First Name"
                   handleChange={handleChange}
                   autoFocus
                   half
                 />
-                <TextField
+                <Input
                   name="lastName"
                   label="Last Name"
                   handleChange={handleChange}
@@ -93,14 +95,14 @@ const Auth = () => {
                 />
               </>
             )}
-            <TextField
+            <Input
               name="email"
               variant="outlined"
               label="Email Address"
               handleChange={handleChange}
               type="email"
             />
-            <TextField
+            <Input
               name="password"
               variant="outlined"
               label="Password"
@@ -109,7 +111,7 @@ const Auth = () => {
               handleShowPassword={handleShowPassword}
             />
             {isSignup && (
-              <TextField
+              <Input
                 name="confirmPassword"
                 label="Repeat Password"
                 handleChange={handleChange}
@@ -145,7 +147,7 @@ const Auth = () => {
             onFailure={googleError}
             cookiePolicy="single_host_origin"
           />
-          <Grid container justify="flex-end">
+          <Grid container justifyContent="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
                 {isSignup
