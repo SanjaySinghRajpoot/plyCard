@@ -7,6 +7,7 @@ import {
   Button,
   Typography,
   ButtonBase,
+  Grid,
 } from "@material-ui/core/";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -14,7 +15,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import EditIcon from "@material-ui/icons/Edit";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 import { likePost, deletePost } from "../../../actions/posts";
 import useStyles from "./styles";
@@ -25,12 +26,12 @@ const Post = ({ post, setCurrentId }) => {
   const history = useHistory();
 
   const openPost = () => {
-      history.push(`/posts/${post._id}`);      
+    history.push(`/posts/${post._id}`);
   };
 
   return (
-    <Card className={classes.card}>
-      <ButtonBase className={classes.cardAction} onClick={openPost}>
+    <Grid container item xs={12} spacing={3}>
+      <Card className={classes.card} item xs={12}>
         <CardMedia
           className={classes.media}
           // image={
@@ -63,7 +64,7 @@ const Post = ({ post, setCurrentId }) => {
           {`Q.` + post.title}
         </Typography>
 
-        <CardContent>
+        <CardContent className={classes.overlay3}>
           <Typography variant="body2" color="textSecondary" component="p">
             {post.message}
           </Typography>
@@ -74,26 +75,26 @@ const Post = ({ post, setCurrentId }) => {
             {post.tags.map((tag) => `#${tag} `)}
           </Typography>
         </div>
-      </ButtonBase>
 
-      <CardActions className={classes.cardActions}>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => dispatch(likePost(post._id))}
-        >
-          <ThumbUpAltIcon fontSize="small" /> &nbsp; Like &nbsp;{" "}
-          {post.likeCount}{" "}
-        </Button>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => dispatch(deletePost(post._id))}
-        >
-          <DeleteIcon fontSize="small" /> Delete
-        </Button>
-      </CardActions>
-    </Card>
+        <CardActions className={classes.cardActions}>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => dispatch(likePost(post._id))}
+          >
+            <ThumbUpAltIcon fontSize="small" /> &nbsp; Like &nbsp;{" "}
+            {post.likeCount}{" "}
+          </Button>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => dispatch(deletePost(post._id))}
+          >
+            <DeleteIcon fontSize="small" /> Delete
+          </Button>
+        </CardActions>
+      </Card>
+    </Grid>
   );
 };
 
