@@ -15,13 +15,13 @@ export default makeStyles({
     border: 'solid',
   },
   card: {
-    width: 900,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'coloumn',
     borderRadius: '7px',
     height: '100%',
     position: 'relative',
+    width: '100%',
   },
   overlay: {
     position: 'absolute',
