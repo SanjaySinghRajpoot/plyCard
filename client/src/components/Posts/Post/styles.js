@@ -22,6 +22,10 @@ export default makeStyles({
     height: '100%',
     position: 'relative',
     width: '100%',
+    paddingBottom: '5px',
+    marginLeft: '-30px',
+    marginTop: '15px',
+    marginBottom: '0px',
   },
   overlay: {
     position: 'absolute',

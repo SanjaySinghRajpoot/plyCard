@@ -30,7 +30,7 @@ const Post = ({ post, setCurrentId }) => {
   };
 
   return (
-    <ButtonBase className={classes.cardAction} onClick={openPost}>
+    // <ButtonBase className={classes.cardAction} onClick={openPost}>
       <Grid container item xs={12} spacing={3}>
         <Card className={classes.card} item xs={12}>
           <CardMedia
@@ -96,7 +96,7 @@ const Post = ({ post, setCurrentId }) => {
           </CardActions>
         </Card>
       </Grid>
-     </ButtonBase>
+    //  </ButtonBase>
   );
 };
 
