@@ -26,77 +26,92 @@ const Post = ({ post, setCurrentId }) => {
   const history = useHistory();
 
   const openPost = () => {
-    history.push(`/posts/${post._id}`); 
+    history.push(`/posts/${post._id}`);
   };
 
   return (
-    <ButtonBase className={classes.cardAction} onClick={openPost}>
-      <Grid container item xs={12} spacing={3}>
-        <Card className={classes.card} item xs={12}>
-          <CardMedia
-            className={classes.media}
-            // image={
-            //   post.selectedFile ||
-            //   "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
-            // }
-            title={post.title}
-          />
-          <div className={classes.overlay}>
-            <Typography variant="h6">{post.creator}</Typography>
-            <Typography variant="body2">
-              {moment(post.createdAt).fromNow()}
-            </Typography>
-          </div>
-          <div className={classes.overlay2}>
-            <Button
-              style={{ color: "white" }}
-              size="small"
-              onClick={() => setCurrentId(post._id)}
-            >
-              <EditIcon />
-            </Button>
-          </div>
-          <Typography
-            className={classes.title}
-            gutterBottom
-            variant="h5"
-            component="h2"
-          >
-            {`Q.` + post.title}
+    // <ButtonBase className={classes.cardAction} onClick={openPost}>
+    <Grid container item xs={12} spacing={3}>
+      <Card className={classes.card} item xs={12}>
+        <CardMedia
+          className={classes.media}
+          // image={
+          //   post.selectedFile ||
+          //   "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
+          // }
+          title={post.title}
+        />
+        <div className={classes.overlay}>
+          <Typography variant="h6" onClick={openPost}>
+            {post.creator}
           </Typography>
 
-          <CardContent className={classes.overlay3}>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {post.message}
-            </Typography>
-          </CardContent>
+          <Typography variant="body2">
+            {moment(post.createdAt).fromNow()}
+          </Typography>
+        </div>
+        <div className={classes.overlay2}>
+          <Button
+            style={{ color: "white" }}
+            size="small"
+            onClick={() => setCurrentId(post._id)}
+          >
+            <EditIcon />
+          </Button>
+        </div>
 
-          <div className={classes.details}>
-            <Typography variant="body2" color="textSecondary" component="h2">
-              {post.tags.map((tag) => `#${tag} `)}
-            </Typography>
-          </div>
+        <Typography
+          className={classes.title}
+          gutterBottom
+          variant="h5"
+          component="h2"
+          onClick={openPost}
+        >
+          {`Q.` + post.title}
+        </Typography>
 
-          <CardActions className={classes.cardActions}>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => dispatch(likePost(post._id))}
-            >
-              <ThumbUpAltIcon fontSize="small" /> &nbsp; Like &nbsp;{" "}
-              {post.likeCount}{" "}
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => dispatch(deletePost(post._id))}
-            >
-              <DeleteIcon fontSize="small" /> Delete
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
-     </ButtonBase>
+        <CardContent className={classes.overlay3}>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            onClick={openPost}
+          >
+            {post.message}
+          </Typography>
+        </CardContent>
+
+        <div className={classes.details}>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="h2"
+            onClick={openPost}
+          >
+            {post.tags.map((tag) => `#${tag} `)}
+          </Typography>
+        </div>
+
+        <CardActions className={classes.cardActions}>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => dispatch(likePost(post._id))}
+          >
+            <ThumbUpAltIcon fontSize="small" /> &nbsp; Like &nbsp;{" "}
+            {post.likeCount}{" "}
+          </Button>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => dispatch(deletePost(post._id))}
+          >
+            <DeleteIcon fontSize="small" /> Delete
+          </Button>
+        </CardActions>
+      </Card>
+    </Grid>
+    //  </ButtonBase>
   );
 };
 

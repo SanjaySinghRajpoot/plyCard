@@ -22,10 +22,12 @@ export default makeStyles((theme) => ({
     flex: 1,
   },
   imageSection: {
+    
     marginLeft: '20px',
     [theme.breakpoints.down('sm')]: {
       marginLeft: 0,
     },
+    width: '50%',
   },
   recommendedPosts: {
     display: 'flex',
