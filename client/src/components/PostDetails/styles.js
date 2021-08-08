@@ -28,7 +28,6 @@ export default makeStyles((theme) => ({
       marginLeft: 0,
     },
     width: '50%',
-    height:'50%'
   },
   recommendedPosts: {
     display: 'flex',
