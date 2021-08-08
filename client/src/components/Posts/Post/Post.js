@@ -24,6 +24,7 @@ const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const history = useHistory();
+  const user = JSON.parse(localStorage.getItem('profile')); 
 
   const openPost = () => {
     history.push(`/posts/${post._id}`);
@@ -43,7 +44,7 @@ const Post = ({ post, setCurrentId }) => {
         />
         <div className={classes.overlay}>
           <Typography variant="h6" onClick={openPost}>
-            {post.creator}
+            {post.name}
           </Typography>
 
           <Typography variant="body2">
