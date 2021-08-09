@@ -25,6 +25,7 @@ const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem('profile')); 
+  
 
   const openPost = () => {
     history.push(`/posts/${post._id}`);
@@ -51,6 +52,8 @@ const Post = ({ post, setCurrentId }) => {
             {moment(post.createdAt).fromNow()}
           </Typography>
         </div>
+
+        {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
         <div className={classes.overlay2}>
           <Button
             style={{ color: "white" }}
@@ -60,7 +63,8 @@ const Post = ({ post, setCurrentId }) => {
             <EditIcon />
           </Button>
         </div>
-
+        )}
+        
         <Typography
           className={classes.title}
           gutterBottom
@@ -102,13 +106,16 @@ const Post = ({ post, setCurrentId }) => {
             <ThumbUpAltIcon fontSize="small" /> &nbsp; Like &nbsp;{" "}
             {post.likeCount}{" "}
           </Button>
-          <Button
-            size="small"
-            color="primary"
-            onClick={() => dispatch(deletePost(post._id))}
-          >
-            <DeleteIcon fontSize="small" /> Delete
-          </Button>
+
+          {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
+            <Button
+              size="small"
+              color="primary"
+              onClick={() => dispatch(deletePost(post._id))}
+            >
+              <DeleteIcon fontSize="small" /> Delete
+            </Button>
+          )}
         </CardActions>
       </Card>
     </Grid>
