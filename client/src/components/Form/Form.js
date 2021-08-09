@@ -60,7 +60,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return(
       <Paper className={classes.paper}>
         <Typography varient="h6" align="center">
-           Please Sign In to make plycards and edit them as well
+           Please Signin to ask a question and to write an answer
         </Typography>
       </Paper>
     )
@@ -81,7 +81,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <TextField
           name="title"
           variant="outlined"
-          label="Title"
+          label="Question"
           fullWidth
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
@@ -89,7 +89,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <TextField
           name="message"
           variant="outlined"
-          label="Message"
+          label="Description"
           fullWidth
           multiline
           rows={4}

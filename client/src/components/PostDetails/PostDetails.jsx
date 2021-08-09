@@ -33,9 +33,11 @@ const PostDetails = () => {
           <Typography gutterBottom variant="h6" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
           <Typography gutterBottom variant="h6" component="p">{post.message}</Typography>
           
-          <div className={classes.imageSection}>
-          <img className={classes.media} src={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={post.title} />
-          </div>
+          {   // Optional Image componenet 
+            post.selectedFile && (  <div className={classes.imageSection}>
+            <img className={classes.media} src={post.selectedFile} alt={post.title} />
+            </div>)
+          }
           
           <br></br>
           <Typography variant="h6">Created by: {post.name}</Typography>
