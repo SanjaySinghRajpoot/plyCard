@@ -23,7 +23,7 @@ export default makeStyles({
     position: 'relative',
     width: '100%',
     paddingBottom: '5px',
-    marginLeft: '-30px',
+    // marginLeft: '-5%',
     marginTop: '15px',
     marginBottom: '0px',
   },
