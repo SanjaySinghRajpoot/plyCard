@@ -6,7 +6,7 @@ import jwt, { decode } from 'jsonwebtoken';
 const auth = async(req, res, next) => {
    try {
       
-    const token = req.headers.authorization.split(" ")[1];
+    const token = req.headers.authorization.split('Bearer ')[1];
     const isCustomAuth = token.length < 500;   // token > 500 = Google Oauth OR token < 500 = local Auth
 
     let decodedData;

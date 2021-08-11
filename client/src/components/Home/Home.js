@@ -13,10 +13,20 @@ import Posts from "../Posts/Posts";
 import Form from "../Form/Form";
 import Pagination from "../pagination";
 import { mergeClasses } from "@material-ui/styles";
+import { useHistory, useLocation } from "react-router-dom";
+import ChipInput from 'material-ui-chip-input';
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 const Home = () => {
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
+  const query = useQuery();
+  const history = useHistory();
+  const page = query.get('page') || 1;
+   
 
   useEffect(() => {
     dispatch(getPosts());
