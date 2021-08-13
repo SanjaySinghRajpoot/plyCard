@@ -10,7 +10,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { getPosts } from "../../actions/posts";
+import { getPosts, getPostsBySearch } from "../../actions/posts";
 import Posts from "../Posts/Posts";
 import Form from "../Form/Form";
 import Pagination from "../pagination";
@@ -41,8 +41,9 @@ const Home = () => {
   }, [currentId, dispatch]);
 
   const searchPost = () => {
-    if(search.trim()){
-       // dispatch function 
+    if(search.trim() || tags){
+       dispatch(getPostsBySearch({ search, tags: tags.join(',')}));
+       history.push(`/posts/search?`);
     }else {
       history.push('/');
     }
