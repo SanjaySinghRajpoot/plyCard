@@ -43,7 +43,7 @@ const Home = () => {
   const searchPost = () => {
     if(search.trim() || tags){
        dispatch(getPostsBySearch({ search, tags: tags.join(',')}));
-       history.push(`/posts/search?`);
+       history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
     }else {
       history.push('/');
     }
@@ -71,7 +71,7 @@ const Home = () => {
           container
           justifyContent="space-between"
           alignItems="stretch"
-          spacing={-6}
+          spacing={0}
         >
           <Grid item xs={12} sm={6} md={3}>
             

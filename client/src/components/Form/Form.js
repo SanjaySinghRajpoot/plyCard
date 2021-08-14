@@ -67,7 +67,7 @@ const Form = ({ currentId, setCurrentId }) => {
   }
 
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} raised elevation={6}>
       <form
         autoComplete="off"
         noValidate
