@@ -34,7 +34,7 @@ const Post = ({ post, setCurrentId }) => {
   return (
     // <ButtonBase className={classes.cardAction} onClick={openPost}>
     <Grid container item xs={12} spacing={3}>
-      <Card className={classes.card} item xs={12}>
+      <Card className={classes.card} item xs={12} raised elevation={6}>
         <CardMedia
           className={classes.media}
           // image={
