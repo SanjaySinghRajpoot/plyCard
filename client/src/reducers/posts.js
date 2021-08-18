@@ -17,7 +17,7 @@ export default (posts = [], action) => {
     case FETCH_POST:
       return { ...STATES, post: action.payload };
     case FETCH_BY_SEARCH:
-      return action.payload; 
+        return { ...STATES, posts: action.payload.data };
     case LIKE:
       return posts.map((post) =>
         post._id === action.payload._id ? action.payload : post

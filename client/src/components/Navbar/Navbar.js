@@ -11,7 +11,7 @@ const Navbar = () => {
   const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));   
   const dispatch = useDispatch();
-  console.log(user);
+  // console.log(user);
   const history = useHistory();
   const location = useLocation();
 
@@ -58,7 +58,7 @@ const Navbar = () => {
               {user.result.name}
             </Typography>
             <Button
-              varient="contained"
+              variant="contained"
               className={classes.logout}
               color="secondary"
               onClick={logout}
@@ -71,8 +71,10 @@ const Navbar = () => {
             <Button
               component={Link}
               to="/auth"
-              varient="contained"
+              variant="contained"
               color="primary"
+              size="small"
+              type="submit"
             >
               Login
             </Button>
