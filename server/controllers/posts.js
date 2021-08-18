@@ -103,5 +103,14 @@ export const likePost = async (req, res) => {
     res.json(updatedPost);
 }
 
+export const commentPost = aync(req, res) => {
+    const { id } = req.params;
+    const { value } = req.body;
+
+    const post = await PostMessage.findById(id);
+
+    post.commentPost.push(value);
+}
+
 
 export default router;

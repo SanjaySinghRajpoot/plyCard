@@ -75,4 +75,8 @@ export const deletePost = (id) => async (dispatch) => {
   }
 };
 
+export const commonPost = (value, id) => async(dispatch) => {
+      const { data } = await api.commonPost(value, id);
 
+      dispatch({type: COMMENT, payload:data });
+};
