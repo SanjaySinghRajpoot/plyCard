@@ -104,4 +104,19 @@ export const likePost = async (req, res) => {
 }
 
 
+export const commentPost = async(req, res) => {
+
+    const { id } = req.params;
+    const { value } = req.body;   // we are getting this from the URL 
+
+    const post = await PostMessage.findById(id);
+
+    post.commentPost.push(value);
+
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
+
+    res.json(updatedPost);
+}
+
+
 export default router;
