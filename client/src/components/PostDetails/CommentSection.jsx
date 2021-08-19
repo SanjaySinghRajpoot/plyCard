@@ -10,7 +10,7 @@ const CommentSection = ({ post }) => {
   const classes = useStyles();
   const [comments, setComments] = useState([1, 2, 2, 4, 5]);
   const [comment, setComment] = useState("");
-  const user = JSON.parse(localStorage.getItem('user'));   // get the user from local storage
+  const user = JSON.parse(localStorage.getItem('profile'));   // get the user from local storage
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -32,30 +32,34 @@ const CommentSection = ({ post }) => {
             </Typography>
           ))}
         </div>
-        <div style={{ width: "70%" }}>
-          <Typography gutterBottom variant="h6">
-            Type a commment
-          </Typography>
-          <TextField
-            fullWidth
-            rows={4}
-            variant="outlined"
-            label="Comment"
-            multiline
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <Button
-            style={{ marginTop: "10px" }}
-            fullwidth
-            disabled={!comment}
-            variant="contained"
-            onClick={handleClick}
-            color="primary"
-          >
-           Comment
-          </Button>
-        </div>
+
+        { user?.result?.name && ( <div style={{ width: "70%" }}>
+        <Typography gutterBottom variant="h6">
+          Type a commment
+        </Typography>
+        <TextField
+          fullWidth
+          rows={4}
+          variant="outlined"
+          label="Comment"
+          multiline
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        />
+        <Button
+          style={{ marginTop: "10px" }}
+          fullwidth
+          disabled={!comment}
+          variant="contained"
+          onClick={handleClick}
+          color="primary"
+        >
+         Comment
+        </Button>
+      </div>
+      
+      )}
+       
       </div>
     </div>
   );
