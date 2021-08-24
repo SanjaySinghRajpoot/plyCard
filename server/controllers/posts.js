@@ -111,12 +111,17 @@ export const commentPost = async(req, res) => {
 
     const post = await PostMessage.findById(id);
 
-    post.commentPost.push(value);
+    if(value == null) {
 
+    }
+    else{
+        post.commentPost.push(value);
+    }
+    
     const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
 
     res.json(updatedPost);
-}
+};
 
 
 export default router;

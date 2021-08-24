@@ -8,7 +8,7 @@ import { commentPost } from '../../actions/posts';
 const CommentSection = ({ post }) => {
   console.log(post);
   const classes = useStyles();
-  const [comments, setComments] = useState([1, 2, 2, 4, 5]);
+  const [comments, setComments] = useState(post?.comments);
   const [comment, setComment] = useState("");
   const user = JSON.parse(localStorage.getItem('profile'));   // get the user from local storage
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const CommentSection = ({ post }) => {
           </Typography>
           {comments.map((c, i) => (
             <Typography key={i} gutterBottom variant="subtitle1">
-              Comment{i}
+                Comment{i}
             </Typography>
           ))}
         </div>
