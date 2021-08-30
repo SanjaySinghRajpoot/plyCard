@@ -26,7 +26,7 @@ export default (posts = [], action) => {
     case COMMENT:
       return{
          ...STATES,
-         posts: posts.map((post) => {
+         posts: STATES.posts.map((post) => {
            if(post._id === action.payload._id){
              return action.payload;  // change only the post in which comment is added
            }
