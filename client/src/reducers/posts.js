@@ -7,6 +7,7 @@ import {
   DELETE,
   LIKE,
   FETCH_BY_SEARCH,
+  COMMENT
 } from "../constants/actionTypes";
 
 export default (posts = [], action) => {
@@ -22,6 +23,17 @@ export default (posts = [], action) => {
       return posts.map((post) =>
         post._id === action.payload._id ? action.payload : post
       );
+    case COMMENT:
+      return{
+         ...STATES,
+         posts: STATES.posts.map((post) => {
+           if(post._id === action.payload._id){
+             return action.payload;  // change only the post in which comment is added
+           }
+
+           return post;
+         })
+      };
     case CREATE:
       return [...posts, action.payload];
     case UPDATE:
