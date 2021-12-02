@@ -13,6 +13,12 @@ npm install
 nodemon index.js
 ```
 
+# Images 
 
 <img width="959" alt="Screenshot 2021-12-02 225459" src="https://user-images.githubusercontent.com/67458417/144472227-454f2b16-db07-41f5-a0e4-dc742162e822.png">
 <img width="959" alt="Screenshot 2021-12-02 225542" src="https://user-images.githubusercontent.com/67458417/144472321-4796ae4d-9a77-4043-b72d-b22647cdbbc6.png">
+
+# Contribute 
+Feel free to raise any issue, once assigned you can send a valid PR. 
+
+
