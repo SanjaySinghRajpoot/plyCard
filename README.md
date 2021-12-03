@@ -1,6 +1,11 @@
 # PlyCard
 Plycard is a website user can post question on various topics and other users can answer them. Each user has to sign up with a form or Google Auth. Once the user is signed a user can like a post, share a post and comment on any post. Every user has the ability to post new question on the website. While adding a new post to the Plycad has the option to add tags to the post which can later be used to search a specific question on the website. 
 
+# Tech Stack Used
+
+Frontend - React Js, Material UI, Redux, Redux-thunk, Axios 
+backend - Node Js, Express, CORS, 
+
 # Insallation 
 ```
 cd client
