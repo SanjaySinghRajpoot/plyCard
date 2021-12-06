@@ -21,7 +21,7 @@ export default (posts = [], action) => {
         return { ...STATES, posts: action.payload.data };
     case LIKE:
       return posts.map((post) =>
-        post._id === action.payload._id ? action.payload : post
+        post._id === action.payload._id ? action.payload : post // verify that it is made by the current user. 
       );
     case COMMENT:
       return{
