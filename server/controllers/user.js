@@ -5,10 +5,10 @@ import User from '../models/user.js';
 
 
 export const signin = async(req, res) => {
-      const  { mobileNo, password }  = req.body;
+      const  { email, password }  = req.body;
 
       try{
-         const existingUser = await User.findOne({ mobileNo });   // find the user in the database 
+         const existingUser = await User.findOne({ email });   // find the user in the database 
           
          if(!existingUser) return res.status(404).json({ message :  "User does not exist "});
 
@@ -16,7 +16,7 @@ export const signin = async(req, res) => {
           
          if(!isPasswordCorrect) return res.status(400).json({message : "Password Incorrect"});
          
-         const token = jwt.sign({ email: existingUser.email, id: existingUser._id}, 'test', {expiresIn: "120s"});  // expires after 5 min
+         const token = jwt.sign({ email: existingUser.email, id: existingUser._id}, 'test', {expiresIn: "1h"});
         
          res.status(200).json({result: existingUser, token});
 
@@ -28,7 +28,7 @@ export const signin = async(req, res) => {
 
 export const signup = async(req, res) => {
      
-    const { email, password, firstName, lastName, confirmPassword, mobileNo } = req.body;
+    const { email, password, firstName, lastName, confirmPassword } = req.body;
 
     try {
         
@@ -42,9 +42,9 @@ export const signup = async(req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 12);
         
-        const result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`, mobileNo});
+        const result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`});
 
-        const token = jwt.sign({ email: result.email, id: result._id}, 'test', {expiresIn: "120s"});  // expire after 5min
+        const token = jwt.sign({ email: result.email, id: result._id}, 'test', {expiresIn: "1h"});
         
 
         res.status(200).json({result, token});
