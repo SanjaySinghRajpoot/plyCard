@@ -7,7 +7,8 @@ import {
   DELETE,
   LIKE,
   FETCH_BY_SEARCH,
-  COMMENT
+  COMMENT,
+  FETCH_BY_CREATOR
 } from "../constants/actionTypes";
 
 export default (posts = [], action) => {
@@ -18,6 +19,7 @@ export default (posts = [], action) => {
     case FETCH_POST:
       return { ...STATES, post: action.payload };
     case FETCH_BY_SEARCH:
+    case FETCH_BY_CREATOR:
         return { ...STATES, posts: action.payload.data };
     case LIKE:
       return posts.map((post) =>
