@@ -22,7 +22,7 @@ export const getPostsBySearch = async (req, res) => {
     try {
         const title = new RegExp(searchQuery, "i");   // a regular expression, i stand to avoid special cases
 
-        const posts = await PostMessage.find({ $or: [ { title }, { tags: { $in: tags.split(',') } } ]});  // find me a message which either the title or one of the tags
+        const posts = await PostMessage.find({ $or: [ { title }, { tags: { $in: tags } } ]});  // find me a message which either the title or one of the tags
   
         res.json({ data: posts });    // if the post is present return it to the front end 
     } catch (error) {    
@@ -117,6 +117,19 @@ export const commentPost = async(req, res) => {
 
     res.json(updatedPost);
 };
+
+export const getPostsByCreator = async (req, res) => {
+    const { name } = req.query;
+
+    try {
+        const posts = await PostMessage.find({ name });
+
+        res.json({ data: posts });
+    } catch (error) {    
+        res.status(404).json({ message: error.message });
+    }
+}
+
 
 
 export default router;
