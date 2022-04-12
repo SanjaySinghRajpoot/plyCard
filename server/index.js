@@ -5,6 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/user.js';
+import request from'supertest';
 
 // node -r esm index.js
 
@@ -21,6 +22,14 @@ app.use('/user', userRoutes);
 app.get('/', (req, res) => {
   res.send('hello to the remote server');
 });
+
+request(app)
+  .get('/')
+  .expect(200)
+  .expect('Content-Length', '26')
+  .end(function(err, res) {
+    if (err) throw err;
+  });
 
 const PORT = process.env.PORT || 5000;
 

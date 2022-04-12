@@ -2,10 +2,14 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
+  "jest": {
+    "verbose": true
+  },
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
@@ -26,5 +30,9 @@
     "react-file-base64": "^1.0.3",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "supertest": "^6.2.2"
   }
 }
