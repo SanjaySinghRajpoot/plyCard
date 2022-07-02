@@ -1,0 +1,16 @@
+version: "0.0.1"
+services:
+  client:
+    build: ./client
+    container_name: client
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./client:/app
+  server:
+    build: ./server
+    container_name: server
+    ports:
+      - '5000:5000'
+    stdin_open: true  #start the container in interactive mode
+
