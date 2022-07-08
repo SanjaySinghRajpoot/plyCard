@@ -1,9 +1,6 @@
-FROM node:17-alpine
+FROM node:13.12.0-alpine
 
 WORKDIR /app
-
-#mapping environment path for node modules
-ENV PATH="./node_modules/.bin:$PATH"
 
 COPY package.json /app
 
