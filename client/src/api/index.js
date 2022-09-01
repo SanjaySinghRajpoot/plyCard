@@ -30,3 +30,4 @@ export const signUp = (formData) => API.post('/user/signup', formData);
 
 export const sendMessageRoute = `${host}/api/messages/addmsg`;
 export const recieveMessageRoute = `${host}/api/messages/getmsg`;
+export const allUsersRoute = `${host}/api/auth/allusers`;

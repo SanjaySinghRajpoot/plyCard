@@ -22,7 +22,7 @@ const App = () => {
            <Route path="/creators/:name" exact component={Creator} />
            <Route path="/auth" exact component={() => (!user ? <Auth /> : <Redirect to="/posts"/>)} />
            <Route path="/posts/:id" component={PostDetails} />
-           <Route path="/message" exact component={Chat} /> 
+           <Route path="/message/:id" component={Chat} /> 
         </Switch>
       </Container>
     </BrowserRouter>

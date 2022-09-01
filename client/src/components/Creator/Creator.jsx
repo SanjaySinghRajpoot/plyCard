@@ -22,7 +22,7 @@ const Creator = () => {
   }, []);
 
   const openMessage = () => {
-    history.push(`/message/`);
+    history.push(`/message/${posts[0].creator}`);
   };
 
   if (!posts && !isLoading) return "No posts";
@@ -41,6 +41,8 @@ const Creator = () => {
           spacing={6}
           // xs={6}
         >
+          {console.log(posts[0].creator)}
+          {console.log(posts)} 
           {posts.map((post) => (
             <Grid key={post._id} item xs={6}>
               <Post post={post} />

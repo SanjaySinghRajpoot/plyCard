@@ -5,9 +5,11 @@ import styled from "styled-components";
 import { allUsersRoute, host } from "../../api/index";
 import ChatContainer from "./ChatContainer";
 import Contacts from "./Contacts";
+import { useParams } from "react-router-dom";
 
 const Chat = () => {
   const socket = useRef();
+  const receiver_id = useParams();
   const [contacts, setContacts] = useState([]);
   const [currentChat, setCurrentChat] = useState(undefined);
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -15,13 +17,18 @@ const Chat = () => {
   useEffect(async () => {
       setCurrentUser(
         await JSON.parse(
-          localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+          localStorage.getItem("profile")
         )
       );
+
+    console.log(currentUser.result.googleId);
+
   }, []);
 
   useEffect(async () => {
     if (currentUser) {
+        const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+        console.log(data, "currentUset");
         setContacts(data.data);
       }
   }, [currentUser]);
@@ -38,11 +45,10 @@ const Chat = () => {
   };
   return (
     <>
+    {console.log(receiver_id)}
     <h1>chat page</h1>
       <Container>
         <div className="container">
-          <Contacts contacts={contacts} changeChat={handleChatChange} />
-            <ChatContainer currentChat={currentChat} socket={socket} />
         </div>
       </Container>
     </>
