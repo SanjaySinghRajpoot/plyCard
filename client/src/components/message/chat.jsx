@@ -3,8 +3,6 @@ import axios from "axios";
 import { io } from "socket.io-client";
 import styled from "styled-components";
 import { allUsersRoute, host } from "../../api/index";
-import ChatContainer from "./ChatContainer";
-import Contacts from "./Contacts";
 import { useParams } from "react-router-dom";
 
 const Chat = () => {
