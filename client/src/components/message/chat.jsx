@@ -2,51 +2,64 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
 import styled from "styled-components";
-import { allUsersRoute, host } from "../../api/index";
+import { allUsersRoute, host, sendMessageRoute } from "../../api/index";
 import { useParams } from "react-router-dom";
 
 const Chat = () => {
   const socket = useRef();
-  const receiver_id = useParams();
+  const receiver_id = useParams();   // revceier unique id 
   const [contacts, setContacts] = useState([]);
   const [currentChat, setCurrentChat] = useState(undefined);
   const [currentUser, setCurrentUser] = useState(undefined);
+  const [messages, setMessages] = useState([]);
 
-  useEffect(async () => {
-      setCurrentUser(
-        await JSON.parse(
-          localStorage.getItem("profile")
-        )
-      );
+  socket.current = io(host);
+  socket.current.emit("add-user", currentUser.result.googleId);
 
-    console.log(currentUser.result.googleId);
+  const handleSendMessage = async(msg) =>{
+     const data = await JSON.parse(localStorage.getItem("profile"));
 
-  }, []);
+     socket.current.emit("send-msg", {
+      to: receiver_id,
+      from: data.result.googleId,
+      msg,
+     });
 
-  useEffect(async () => {
-    if (currentUser) {
-        const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
-        console.log(data, "currentUset");
-        setContacts(data.data);
-      }
-  }, [currentUser]);
+     await axios.post(sendMessageRoute, {
+      from: data.result.googleId,
+      to: receiver_id,
+      message: msg,
+     });
 
-  useEffect(() => {
-    if (currentUser) {
-      socket.current = io(host);
-      socket.current.emit("add-user", currentUser._id);
-    }
-  }, [currentUser]);
+     const mesgs = [...message]
+     mesgs.push({fromSelf: true, message: msg});
+     setMessages(mesgs);
+  }
 
-  const handleChatChange = (chat) => {
-    setCurrentChat(chat);
-  };
+  // useEffect(async () => {
+  //     setCurrentUser(
+  //       await JSON.parse(
+  //         localStorage.getItem("profile")
+  //       )
+  //     );
+
+  //   console.log(currentUser.result.googleId);
+
+  // }, []);
+
+
+  // const handleChatChange = (chat) => {
+  //   setCurrentChat(chat);
+  // };
+
+
   return (
     <>
     {console.log(receiver_id)}
     <h1>chat page</h1>
       <Container>
-        <div className="container">
+        <div>
+          this will be chat section
         </div>
       </Container>
     </>
