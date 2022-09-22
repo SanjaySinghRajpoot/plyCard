@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Auth from "./components/Auth/Auth";
 import PostDetails from "./components/PostDetails/PostDetails";
 import Creator from './components/Creator/Creator';
+import Chat from "./components/message/chat";
 
 const App = () => {
 
@@ -20,7 +21,8 @@ const App = () => {
            <Route path="/posts" exact component={Home} />
            <Route path="/creators/:name" exact component={Creator} />
            <Route path="/auth" exact component={() => (!user ? <Auth /> : <Redirect to="/posts"/>)} />
-           <Route path="/posts/:id" component={PostDetails} /> 
+           <Route path="/posts/:id" component={PostDetails} />
+           <Route path="/message/:id" component={Chat} /> 
         </Switch>
       </Container>
     </BrowserRouter>

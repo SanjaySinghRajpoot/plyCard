@@ -4,7 +4,8 @@ Plycard is a website user can post question on various topics and other users ca
 # Tech Stack Used
 
 Frontend - React Js, Material UI, Redux, Redux-thunk, Axios 
-backend - Node Js, Express, 
+backend - Node Js, Express,
+Tools - Docker, Kubernetes, Heroku CLI
 Database - MongoDB 
 Testing - Jest, Super Tests
 
