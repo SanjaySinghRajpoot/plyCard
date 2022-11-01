@@ -1,7 +1,6 @@
 # PlyCard
 Plycard is a website user can post question on various topics and other users can answer them. Each user has to sign up with a form or Google Auth. Once the user is signed a user can like a post, share a post and comment on any post. Every user has the ability to post new question on the website. While adding a new post to the Plycad has the option to add tags to the post which can later be used to search a specific question on the website. 
 
-Each 
 
 # Tech Stack Used
 
@@ -12,6 +11,11 @@ Each
 - Testing - Jest, Super Tests
 
 # Insallation 
+
+If you have docker installed on your computer then go to the root folder and directly run `docker compose up` in the termial. The entire application is dockerized. You can track the logs in the terminal. If you don't want to use docker then use the below commands to run the applicaion. 
+
+
+
 ```
 cd client
 npm install 
