@@ -19,8 +19,8 @@ const Chat = () => {
   const [msg, setMsg] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
-  socket.current = io(host);
-  socket.current.emit("add-user", currentUser.result.googleId);
+  // socket.current = io(host);
+  // socket.current.emit("add-user", currentUser.result.googleId);
 
   const handleSendMessage = async(msg) =>{
      const data = await JSON.parse(localStorage.getItem("profile"));

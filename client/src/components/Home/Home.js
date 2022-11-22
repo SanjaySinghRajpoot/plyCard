@@ -17,8 +17,8 @@ import Pagination from "../pagination";
 import { mergeClasses } from "@material-ui/styles";
 import { useHistory, useLocation } from "react-router-dom";
 import useStyles from "./styles";
-import Chip from '@material-ui/core/Chip';
-import ChipInput from 'material-ui-chip-input';
+import Chip from "@material-ui/core/Chip";
+import ChipInput from "material-ui-chip-input";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -32,37 +32,38 @@ const Home = () => {
   const page = query.get("page") || 1;
   const searchQuery = query.get("searchQuery");
   const classes = useStyles();
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [tags, setTags] = useState([]);
-
 
   useEffect(() => {
     dispatch(getPosts());
   }, [currentId, dispatch]);
 
   const searchPost = () => {
-    if(search.trim() || tags){
-       dispatch(getPostsBySearch({ search, tags: tags.join(',')}));
-       history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
-    }else {
-      history.push('/');
-    }
-  }
-
-  const handlekeyPress = (e) => {
-    if(e.keyCode === 13){   // 13 = enter key
-        searchPost();
+    if (search.trim() || tags) {
+      dispatch(getPostsBySearch({ search, tags: tags.join(",") }));
+      history.push(
+        `/posts/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`
+      );
+    } else {
+      history.push("/");
     }
   };
 
+  const handlekeyPress = (e) => {
+    if (e.keyCode === 13) {
+      // 13 = enter key
+      searchPost();
+    }
+  };
 
   const handleAdd = (tag) => {
     setTags([...tags, tag]);
-  }
+  };
 
   const handleDelete = (tagToDelete) => {
-       setTags(tags.filter((tag) => tag !== tagToDelete));  
-  }
+    setTags(tags.filter((tag) => tag !== tagToDelete));
+  };
 
   return (
     <Grow in>
@@ -74,7 +75,6 @@ const Home = () => {
           spacing={0}
         >
           <Grid item xs={12} sm={6} md={3}>
-            
             <AppBar
               className={classes.appBarSearch}
               position="static"
@@ -90,16 +90,23 @@ const Home = () => {
                 onChange={(e) => setSearch(e.target.value)}
               />
               <ChipInput
-               style={{ margin: '10px 0px 0px 0px'}}
-               variant="outlined"
-               color="primary"
-               value={tags}
-               onAdd={handleAdd}
-               onDelete={handleDelete}
-               label="Search Tags"
+                style={{ margin: "10px 0px 0px 0px" }}
+                variant="outlined"
+                color="primary"
+                value={tags}
+                onAdd={handleAdd}
+                onDelete={handleDelete}
+                label="Search Tags"
               />
               <br></br>
-              <Button onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">Search</Button>
+              <Button
+                onClick={searchPost}
+                className={classes.searchButton}
+                variant="contained"
+                color="primary"
+              >
+                Search
+              </Button>
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
           </Grid>
@@ -110,10 +117,7 @@ const Home = () => {
             </Paper>
           </Grid>
 
-          <Grid>
-            
-          </Grid>
-
+          <Grid></Grid>
         </Grid>
       </Container>
     </Grow>
