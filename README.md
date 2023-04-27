@@ -22,7 +22,13 @@ This repository contains the code for PlyCard, built using the MERN stack. The f
 
 If you have docker installed on your computer then go to the root folder and directly run `docker compose up` in the termial. The entire application is dockerized. You can track the logs in the terminal. If you don't want to use docker then use the below commands to run the applicaion. 
 
+1. Clone the repository:
+```
+git clone https://github.com/{username}/PlyCard.git
+cd PlyCard
+```
 
+2. Install dependencies:
 
 ```
 cd client
@@ -34,6 +40,16 @@ cd server
 npm install 
 nodemon index.js
 ```
+
+3. Configure the environment variables:
+
+Create a .env file in the server directory and add the following variables:
+
+```
+MONGO_URI=<your-mongodb-uri>
+SECRET=<your-secret>
+```
+
 
 # Images 
 
