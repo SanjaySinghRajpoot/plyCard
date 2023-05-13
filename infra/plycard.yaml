@@ -1,33 +1,35 @@
+# Service definition for the knote application
 apiVersion: v1
 kind: Service
 metadata:
-  name: knote
+  name: knote  # Name of the service object
 spec:
   selector:
-    app: knote
+    app: knote  # Select the pods with label 'app: knote' to target with the service
   ports:
-    - port: 5000
+    - port: 5000  # Expose the container port 5000 as service port
       targetPort: 5000
-  type: LoadBalancer
----
+  type: LoadBalancer  # Create a load balancer for the service
+
+# Deployment definition for the knote application
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: knote
+  name: knote  # Name of the deployment object
 spec:
-  replicas: 1
+  replicas: 1  # Create only one replica of the pod
   selector:
     matchLabels:
-      app: knote
+      app: knote  # Select the pods with label 'app: knote' for the deployment
   template:
     metadata:
       labels:
-        app: knote
+        app: knote  # Add label 'app: knote' to the pod template
     spec:
       containers:
-        - name: knote
-          image: buddy22/plycard_server
+        - name: knote  # Name of the container
+          image: buddy22/plycard_server  # Docker image for the container
           ports:
-            - containerPort: 5000
-              hostPort: 5000
-          imagePullPolicy: Always
+            - containerPort: 5000  # Expose the container port 5000
+              hostPort: 5000  # Map the container port to host port 5000
+          imagePullPolicy: Always  # Always pull the latest version of the Docker image

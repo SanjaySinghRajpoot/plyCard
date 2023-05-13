@@ -16,7 +16,7 @@ import Input from "./input";
 import { useHistory } from "react-router-dom";
 import { signin, signup } from "../../actions/auth";
 
-const initialState = { firstName: '', lastName:'', email:'', password:'', confirmPassword:''};
+const initialState = { firstName: '', lastName:'', email:'', password:'', confirmPassword:'' };
 
 const Auth = () => {
   const classes = useStyles();

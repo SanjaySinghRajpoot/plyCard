@@ -1,40 +1,41 @@
----
+# Service definition for the frontend application
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend
+  name: frontend  # Name of the service object
 spec:
   selector:
-    app: hello
-    tier: frontend
+    app: hello  # Select the pods with label 'app: hello'
+    tier: frontend  # Select the pods with label 'tier: frontend'
   ports:
-  - protocol: "TCP"
-    port: 3000
-    targetPort: 3000
-  type: LoadBalancer
----
+  - protocol: "TCP"  # Protocol used for the port (TCP in this case)
+    port: 3000  # Port number to expose on the service
+    targetPort: 3000  # Port number that the container exposes
+  type: LoadBalancer  # Expose the service externally using a cloud provider's load balancer
+
+# Deployment definition for the frontend application
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: frontend  # Name of the deployment object
 spec:
   selector:
     matchLabels:
-      app: hello
-      tier: frontend
-      track: stable
-  replicas: 1
+      app: hello  # Select the pods with label 'app: hello'
+      tier: frontend  # Select the pods with label 'tier: frontend'
+      track: stable  # Select the pods with label 'track: stable'
+  replicas: 1  # Number of pod replicas to create
   template:
     metadata:
       labels:
-        app: hello
-        tier: frontend
-        track: stable
+        app: hello  # Label to apply to the pod
+        tier: frontend  # Label to apply to the pod
+        track: stable  # Label to apply to the pod
     spec:
       containers:
-        - name: nginx
-          image: buddy22/play-cards
+        - name: nginx  # Name of the container
+          image: buddy22/play-cards  # Docker image to use for the container
           lifecycle:
-            preStop:
+            preStop:  # Define a preStop hook to run before the container is terminated
               exec:
-                command: ["/usr/sbin/nginx","-s","quit"]
+                command: ["/usr/sbin/nginx","-s","quit"]  # Command to run in the preStop hook
