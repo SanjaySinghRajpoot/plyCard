@@ -7,7 +7,7 @@ This repository contains the code for PlyCard, built using the MERN stack. The f
 # Tech Stack Used
 
 - Frontend - React Js, Material UI, Redux, Redux-thunk, Axios 
-- Backend - Node Js, Express,
+- Backend - Node Js, Express, Mongoose
 - Tools - Docker, Kubernetes, Heroku CLI
 - Database - MongoDB 
 - Testing - Jest, Super Tests
